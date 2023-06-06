@@ -42,7 +42,7 @@ int brute(vector<int>vec, int n){
     for (int i = 0; i < n; i++){
         for (int j = i + 1; j<n; j++){
             if(vec[j]>vec[i]){
-                pro = max(vec[j], pro);
+                pro = max(vec[j]-vec[i], pro);
             }
         }
     }
@@ -53,7 +53,7 @@ int brute(vector<int>vec, int n){
 int Optimal(vector<int>vec, int n){
     int mxp =0;
     int minp = INT_MAX;
-    for (auto i = 0; i<vec.size(); i++){
+    for (int i = 0; i<vec.size(); i++){
         minp = min(minp, vec[i]);
         mxp = max(mxp, vec[i] - minp);
     }
@@ -61,16 +61,18 @@ int Optimal(vector<int>vec, int n){
 }
 int main(){
     int n;
-    cout << "Enter the size of tha arraay ";
+    cout << "Enter the size of tha array ";
     cin >> n;
-    vector<int> vec;
+    vector<int> vec(n);
     cout << "Enter " << n << " elemets in to the array " << endl;
     for (int i = 0; i < n; i++){
         cin >> vec[i];
     }
     cout << "Brute force approach : ";
-    cout << brute(vec, n);
+    int ans1 = brute(vec, n);
+    cout << ans1 << endl;
     cout << "Optimal approach : ";
-    cout << Optimal(vec, n);
+    int ans2 = Optimal(vec, n);
+    cout << ans2;
     return 0;
 }
