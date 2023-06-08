@@ -71,7 +71,7 @@ void brute(vector<int>vec, int n, int t){
 }
 
 
-void 
+
 
 int main(){
     int n;
