@@ -70,7 +70,49 @@ void brute(vector<int>vec, int n, int t){
     
 }
 
+void better(vector<int>vec, int n, int t){
+    cout << "Better approach ";
+    unordered_map<int, int> ump;
+    vector<int> ans;
+    for (int i = 0; i < n; i++){
+        int k = t - vec[i];
+        if(ump.find(k)!=ump.end()){
+            ans.push_back(k);
+            ans.push_back(vec[i]);
+            print(ans);
+            return;
+        }
+        ump[vec[i]] = 1;
+    }
+    ans.push_back(-1);
+    ans.push_back(-1);
+    print(ans);
+}
 
+void optimal(vector<int>vec, int n, int t){
+    cout << "Optimal approach ";
+    int l = 0;
+    int h = n - 1;
+    vector<int> ans;
+    sort(vec.begin(), vec.end());
+    while(l<h){
+        if(vec[l]+vec[h] == t){
+            ans.push_back(vec[l]);
+            ans.push_back(vec[h]);
+            print(ans);
+            return;
+        }
+        else if(vec[l]+vec[h] >t){
+            h--;
+        }
+        else if(vec[l]+vec[h] <t){
+            l++;
+        }
+    }
+    ans.push_back(-1);
+    ans.push_back(-1);
+    print(ans);
+}
 
 
 int main(){
@@ -86,4 +128,6 @@ int main(){
     cout << "Enter the target element ";
     cin >> t;
     brute(vec, n, t);
+    better(vec, n, t);
+    optimal(vec, n, t);
 }
