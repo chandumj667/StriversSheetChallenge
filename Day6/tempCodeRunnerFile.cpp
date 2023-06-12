@@ -1,0 +1,2 @@
+Node *btr = brute(head);
+    
