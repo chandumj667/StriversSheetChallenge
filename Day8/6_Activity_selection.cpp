@@ -36,7 +36,7 @@ bool comp(meets m1, meets m2){
         return true;
     else
         return false;
-};
+}
 
 void solve(vector<int> &st, vector<int> &en, int n){
     meets meet[n];

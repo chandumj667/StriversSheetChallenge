@@ -39,7 +39,7 @@ bool comp(struct meets m1, meets m2){
         return true;
     else
         return false;
-};
+}
 
 
 
