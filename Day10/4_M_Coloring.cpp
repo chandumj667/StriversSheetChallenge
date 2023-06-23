@@ -41,7 +41,7 @@
 using namespace std;
 
 
-bool iss(int node, int colors[], bool graph[101][101], int n, int col){
+bool is_safe(int node, int colors[], bool graph[101][101], int n, int col){
     for (int k = 0; k < n; k++){
         if(k!=node && graph[k][node]==1 && colors[k]==col){
             return false;
@@ -55,7 +55,7 @@ bool solve(int node, int colors[], int m, int n, bool graph[101][101]){
         return true;
     }
     for (int i = 1; i <= m; i++){
-        if(iss(node, colors, graph, n, i)){
+        if(is_safe(node, colors, graph, n, i)){
             colors[node] = i;
             if(solve(node+1, colors, m, n, graph))
                 return true;
